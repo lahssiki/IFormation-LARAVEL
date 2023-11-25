@@ -11,7 +11,7 @@ class EtudiantRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class EtudiantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "cin"=> "required | min:3",
+            "nom"=> "required | min:3",
+            "prenom"=> "required | min:3",
+            "gender"=> "required",
+            "date_naissance"=> "required",
+            "note"=> "required",
+            "bac_image"=> "required",
+            "filiere"=> "required",
+            "specialite"=> "required",
         ];
     }
 }

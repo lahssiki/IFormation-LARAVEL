@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section("content")
-<h1>dashboard user</h1>
-
-
+<div>
+    <h1 class="text-center" >Dashboard User</h1>
+</div>
 @endsection

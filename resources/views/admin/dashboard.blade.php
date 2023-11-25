@@ -2,5 +2,5 @@
 
 @section('content')
 
-<h1>dashboard admin</h1>    
+<h1 class="text-center">dashboard admin</h1>    
 @endsection

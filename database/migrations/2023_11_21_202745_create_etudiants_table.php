@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('date_naissance');
             $table->float('note')->nullable();
             $table->string('bac_image')->nullable();
-            $table->enum('filiere', ['SM', 'SVT', 'PC','BAC Eco','Bac pro']);
+            $table->enum('filiere', ['SM', 'SVT', 'PC','BACEco','Bacpro']);
             $table->enum('specialite', ['informatique', 'gestion', 'infographie']);
             $table->enum('stauts', ['admis', 'non_admis', 'liste_d_attente','null'])->default('null');
             $table->timestamps();
