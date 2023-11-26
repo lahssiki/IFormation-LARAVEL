@@ -10,7 +10,7 @@ use GuzzleHttp\Promise\Create;
 
 class EtudiantController extends Controller
 {
-    function etudiant(){
+    public function etudiant(){
         return view("etu.userHome");
     }
 

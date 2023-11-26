@@ -22,10 +22,8 @@ Route::get("/", function () {
     return view("welcome");
 });
 
-
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
-
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
@@ -43,7 +41,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
     // home etudiants
     Route::get('/etudiant', [EtudiantController::class, 'etudiant'])->name('etu.userHome');
-
     // page inscription
     Route::get('/inscription', [EtudiantController::class, 'inscription'])->name('etu.inscription');
     Route::post('/inscription', [EtudiantController::class, 'store'])->name('etu.inscription');
