@@ -47,5 +47,10 @@ class AdminController extends Controller
             return redirect()->route("etu.userHome");
         }
     }
-    
+    public function show($id){
+        if (Gate::allows("admin")) {
+        $etudiants = Etudiant::findOrFail($id);
+        return view("admin.bac-show", compact("$etudiants"));
+        }
+    }
 }

@@ -7,6 +7,7 @@ use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use App\Models\Etudiant;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\Gate;
 
 class EtudiantController extends Controller
 {
