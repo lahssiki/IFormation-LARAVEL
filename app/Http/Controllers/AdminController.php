@@ -42,8 +42,5 @@ class AdminController extends Controller
             return redirect()->route("etu.userHome");
         }
     }
-    public function inscription()
-    {
-        return view("etu.inscription");
-    }
+    
 }

@@ -2,9 +2,18 @@
 
 @section("content")
 <h1 class="text-center mt-3">Page inscription</h1>
-
+<div>
+@if ($errors->any())
+  <ul>
+    @foreach ($errors->all() as $error)
+      <li>{!! $error !!}</li>
+    @endforeach
+  </ul>
+@endif
+</div>
 <div class="container mt-5">
-  <form>
+  <form method="POST" action="{{route("etu.inscription")}}" enctype="multipart/form-data" >
+    @csrf
     <div class="form-row align-items">
     <div class="form-group m-2">
       <label for="cin">CIN</label>
@@ -24,11 +33,11 @@
     <div class="form-group m-2">
       <label>Genre</label>
       <div class="form-check">
-        <input type="radio" class="form-check-input" id="genreHomme" name="gender" value="Homme" required>
+        <input type="radio" class="form-check-input" id="genreHomme" name="gender" value="homme" required>
         <label class="form-check-label" for="genreHomme">Homme</label>
       </div>
       <div class="form-check ">
-        <input type="radio" class="form-check-input" id="genreFemme" name="gender" value="Femme" required>
+        <input type="radio" class="form-check-input" id="genreFemme" name="gender" value="femme" required>
         <label class="form-check-label" for="genreFemme">Femme</label>
       </div>
     </div>

@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/etudiant', [EtudiantController::class, 'etudiant'])->name('etu.userHome');
 
     // page inscription
-    Route::get('/inscription', [AdminController::class, 'inscription'])->name('etu.inscription');
+    Route::get('/inscription', [EtudiantController::class, 'inscription'])->name('etu.inscription');
+    Route::post('/inscription', [EtudiantController::class, 'store'])->name('etu.inscription');
 
 });
