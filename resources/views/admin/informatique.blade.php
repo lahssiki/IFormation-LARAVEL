@@ -18,6 +18,8 @@
                 <th scope="col">Spécialité</th>
                 <th scope="col">Stauts</th>
             </tr>
+        </thead>
+        <tbody>
             @foreach ($etudiants as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
@@ -26,15 +28,15 @@
                     <td>{{ $item->nom }}</td>
                     <td>{{ $item->prenom }}</td>
                     <td>{{ $item->gender }}</td>
-                    <td>{{ $item->date_naissance->format('Y-m-d') }}</td>
+                    <td>{{ $item->date_naissance }}</td>
                     <td>{{ $item->note }}</td>
-                    <td><a href="{{ route('bac.show', $item->bac_image) }}" class="btn btn-primary">Bac image</a></td>
+                    <td><a href="{{ route('etu.bac', ['id'=> $item->id]) }}" class="btn btn-primary">Bac image</a></td>
                     <td>{{ $item->filiere }}</td>
                     <td>{{ $item->specialite }}</td>
                     <td>{{ $item->stauts }}</td>
-
                 </tr>
             @endforeach
             </tr>
+        </tbody>
     </table>
 @endsection

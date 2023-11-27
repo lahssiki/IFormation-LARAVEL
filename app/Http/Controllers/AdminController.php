@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Etudiant;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -19,11 +20,13 @@ class AdminController extends Controller
             return redirect()->route("etu.userHome");
     }
 
-    public function informatique()
+    public function informatique(Request $etudiants)
     {
         if (Gate::allows("admin")) {
-            $etudiants = Etudiant::where('specialite','informatique');
-            return view("admin.informatique",["etudiants"=> $etudiants]);
+            //$etudiants = Etudiant::
+            $etudiants = DB::table('etudiants')->where('specialite', 'informatique')->get();
+            //dd($etudiants);
+            return view("admin.informatique", ["etudiants"=> $etudiants]);
         } else {
             return redirect()->route("etu.userHome");
         }
@@ -32,7 +35,8 @@ class AdminController extends Controller
     public function infographie()
     {
         if (Gate::allows("admin")) {
-            $etudiants = Etudiant::where('specialite', 'infographie');
+            $etudiants = DB::table('etudiants')->where('specialite', 'infographie')->get();
+            //$etudiants = Etudiant::where('specialite', 'infographie');
             return view("admin.infographie", ["etudiants"=> $etudiants]);
         } else {
             return redirect()->route("etu.userHome");
@@ -41,16 +45,18 @@ class AdminController extends Controller
     public function gestion()
     {
         if (Gate::allows("admin")) {
-            $etudiants = Etudiant::where('specialite','gestion');
+            $etudiants = DB::table('etudiants')->where('specialite', 'gestion')->get();
+            //$etudiants = Etudiant::where('specialite','gestion');
             return view("admin.gestion", ["etudiants"=> $etudiants]);
         } else {
             return redirect()->route("etu.userHome");
         }
     }
-    public function show($id){
+    public function bacImage($id){
         if (Gate::allows("admin")) {
         $etudiants = Etudiant::findOrFail($id);
-        return view("admin.bac-show", compact("$etudiants"));
+        return view("admin.bac-show")->with("etudiants", $etudiants);
         }
     }
+
 }

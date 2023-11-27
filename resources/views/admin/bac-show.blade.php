@@ -2,11 +2,10 @@
 
 @section('content')
 
-<div>
-    <div>
-        <img src="{{ asset('storage/' . $etudiants->bac_image) }}"
-            alt="{{ $etudiants->id }}">
-    </div>
+<div class="mt-5">
+
+    <img src="{{ asset('storage/' . $etudiants->bac_image) }}"
+        alt="{{ $etudiants->id }}">
 </div>
 
 @endsection
