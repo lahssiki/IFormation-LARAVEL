@@ -23,5 +23,10 @@ class Etudiant extends Model
         'note',
         'specialite',
         'stauts',
+        'user_id'
     ];
+
+    public function user(){
+        $this->belongsTo(User::class);
+    }
 }

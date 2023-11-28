@@ -6,8 +6,10 @@ use App\Http\Requests\EtudiantRequest;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use App\Models\Etudiant;
+use App\Models\User;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class EtudiantController extends Controller
 {
@@ -23,13 +25,15 @@ class EtudiantController extends Controller
     public function store(EtudiantRequest $request){
 
         $formFields = $request->Validated();
-
+        
         $number_inscription = mt_rand(1000000 , 9999999);
         $formFields = $request->all();
-        $formFields['number_inscription'] = $number_inscription;
-        $this->uploadImage($request,$formFields);
-        Etudiant::create($formFields);
 
+        $formFields['number_inscription'] = $number_inscription;
+
+        $this->uploadImage($request,$formFields);
+        $formFields['user_id'] = Auth::id();
+        Etudiant::create($formFields);
         
         return redirect()->route("etu.userHome")->with("success","LA9AD TASSAJALTOM BI NAJA7");
     }
